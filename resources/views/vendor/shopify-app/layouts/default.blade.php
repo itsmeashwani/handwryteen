@@ -27,7 +27,7 @@
                             <li class="nav-item @if(Request::path() == '/') active @endif">
                             <a class="nav-link" href="{{ url('/') }}">Dashboard <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item @if(Request::path() == 'triggers') active @endif">
+                            {{-- <li class="nav-item @if(Request::path() == 'triggers') active @endif">
                                 <a class="nav-link" href="{{ url('triggers') }}">Triggers</a>
                               </li>
                             <li class="nav-item @if(Request::path() == 'customers') active @endif">
@@ -38,7 +38,7 @@
                               </li>
                               <li class="nav-item @if(Request::path() == 'settings') active @endif">
                                 <a class="nav-link" href="{{ url('settings') }}">Settings</a>
-                              </li>
+                              </li> --}}
                     
                           </ul>
                         </div>
@@ -56,7 +56,7 @@
                 var app = createApp({
                     apiKey: '{{ config('shopify-app.api_key') }}',
                     shopOrigin: '{{ Auth::user()->name }}',
-                    forceRedirect: false,
+                    forceRedirect: true,
                 });
             </script>
 
