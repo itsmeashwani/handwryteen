@@ -131,7 +131,7 @@ return [
     |
     */
 
-    'api_scopes' => 'read_products,write_products,read_themes,write_themes,read_customers,read_orders,write_orders,write_script_tags',
+    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_products,read_themes,write_themes,read_customers,read_orders,write_script_tags'),
 
     /*
     |--------------------------------------------------------------------------
@@ -215,7 +215,7 @@ return [
     |
     */
 
-    'myshopify_domain' => env('SHOPIFY_MYSHOPIFY_DOMAIN', 'https://cloud1212.myshopify.com/'),
+    'myshopify_domain' => env('SHOPIFY_MYSHOPIFY_DOMAIN', 'myshopify.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -288,12 +288,6 @@ return [
     */
 
     'scripttags' => [
-
-        [
-            'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', 'https://some-app.com/some-controller/js-method-response'),
-            'event' => env('SHOPIFY_SCRIPTTAG_1_EVENT', 'onload'),
-            'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
-        ],
         /*
             [
                 'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', 'https://some-app.com/some-controller/js-method-response'),
