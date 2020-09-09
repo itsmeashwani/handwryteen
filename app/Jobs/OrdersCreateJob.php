@@ -51,15 +51,15 @@ class OrdersCreateJob implements ShouldQueue
      */
     public function handle(Request $request)
     {
-        $hmac = $request->header('x-shopify-hmac-sha256') ?: '';
-        $response = Http::withHeaders([
-            'X-Shopify-Topic' => 'orders/create',
-            'X-Shopify-Hmac-Sha256' => $hmac,
-            'X-Shopify-Shop-Domain' => 'cloud1212.myshopify.com',
-            'X-Shopify-API-Version' => '2020-07',
-        ])->get('https://cloud1212.myshopify.com/admin/api/2020-07/webhooks.json');
+        // $hmac = $request->header('x-shopify-hmac-sha256') ?: '';
+        // $response = Http::withHeaders([
+        //     'X-Shopify-Topic' => 'orders/create',
+        //     'X-Shopify-Hmac-Sha256' => $hmac,
+        //     'X-Shopify-Shop-Domain' => 'cloud1212.myshopify.com',
+        //     'X-Shopify-API-Version' => '2020-07',
+        // ])->get('https://cloud1212.myshopify.com/admin/api/2020-07/webhooks.json');
 
-        print_r($response);
+        // print_r($response);
         
         // Do what you wish with the data
         // Access domain name as $this->shopDomain->toNative()

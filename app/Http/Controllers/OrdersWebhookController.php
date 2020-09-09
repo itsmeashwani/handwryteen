@@ -12,18 +12,18 @@ class OrdersWebhookController extends Controller
 {
     public function create(Request $request)
     {
-        $user= Auth::user();
-        // dd($user->name);
-        $token = $request->session()->get('shopify_session_token');
-        dd($token);
-        $response = Http::withHeaders([
-            'X-Shopify-Topic' => 'orders/create',
-            'X-Shopify-Hmac-Sha256' => $token,
-            'X-Shopify-Shop-Domain' => 'cloud1212.myshopify.com',
-            'X-Shopify-API-Version' => '2020-07',
-        ])->get('https://cloud1212.myshopify.com/admin/api/2020-07/webhooks.json');
+        // $user= Auth::user();
+        // // dd($user->name);
+        // $token = $request->session()->get('shopify_session_token');
+        // dd($token);
+        // $response = Http::withHeaders([
+        //     'X-Shopify-Topic' => 'orders/create',
+        //     'X-Shopify-Hmac-Sha256' => $token,
+        //     'X-Shopify-Shop-Domain' => 'cloud1212.myshopify.com',
+        //     'X-Shopify-API-Version' => '2020-07',
+        // ])->get('https://cloud1212.myshopify.com/admin/api/2020-07/webhooks.json');
 
-        return $response;
+        // return $response;
     }
 
     public function registerOrdersWebhook()

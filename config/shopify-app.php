@@ -131,7 +131,7 @@ return [
     |
     */
 
-    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_products,read_themes,write_themes,read_customers,read_orders,write_orders,write_script_tags'),
+    'api_scopes' => 'read_products,write_products,read_themes,write_themes,read_customers,read_orders,write_orders,write_script_tags',
 
     /*
     |--------------------------------------------------------------------------
@@ -215,7 +215,7 @@ return [
     |
     */
 
-    'myshopify_domain' => env('SHOPIFY_MYSHOPIFY_DOMAIN', 'myshopify.com'),
+    'myshopify_domain' => env('SHOPIFY_MYSHOPIFY_DOMAIN', 'https://cloud1212.myshopify.com/'),
 
     /*
     |--------------------------------------------------------------------------
