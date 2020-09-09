@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        '/app/uninstalled-webhook-shopify/*',
+        '/orders/create-webhook-shopify/*',
     ];
 }

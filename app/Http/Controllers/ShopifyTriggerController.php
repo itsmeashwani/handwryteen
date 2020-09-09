@@ -19,12 +19,10 @@ class ShopifyTriggerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $triggers = ShopifyTrigger::where('user_id', Auth::id())->latest()->get();
-        // $handwrytten = HandwryttenApi::latest()->first();
         $handwrytten = DB::table('handwrytten_apis')->where('user_id', '=', Auth::id())->first();
-        // dd($handwrytten);
 
         if(is_null($handwrytten)){
             return view('handwrytten-app.login');
@@ -111,11 +109,11 @@ class ShopifyTriggerController extends Controller
         // dd($request->all());
         $formData = $request->validate([
             'trigger_card' => '',
-            'trigger_message' => 'string',
-            'trigger_signoff' => 'string',
-            'trigger_handwriting_style' => 'string',
-            'trigger_insert' => 'string',
-            'trigger_gift_card' => 'string',
+            'trigger_message' => 'required|string',
+            'trigger_signoff' => 'required|string',
+            'trigger_handwriting_style' => 'required|string',
+            'trigger_insert' => 'required|string',
+            'trigger_gift_card' => 'required|string',
             'trigger_status' => 'string'
         ]);
 

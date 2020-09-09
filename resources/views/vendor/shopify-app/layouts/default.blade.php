@@ -27,10 +27,10 @@
                             <li class="nav-item @if(Request::path() == '/') active @endif">
                             <a class="nav-link" href="{{ url('/') }}">Dashboard <span class="sr-only">(current)</span></a>
                             </li>
-                            {{-- <li class="nav-item @if(Request::path() == 'triggers') active @endif">
-                                <a class="nav-link" href="{{ url('triggers') }}">Triggers</a>
-                              </li>
-                            <li class="nav-item @if(Request::path() == 'customers') active @endif">
+                            <li class="nav-item @if(Request::path() == 'webhook/orders/create') active @endif">
+                                <a class="nav-link" href="{{ url('webhook/orders/create') }}">Webhook</a>
+                            </li>
+                            {{-- <li class="nav-item @if(Request::path() == 'customers') active @endif">
                               <a class="nav-link" href="{{ url('customers') }}">Customers</a>
                             </li>
                             <li class="nav-item @if(Request::path() == 'products') active @endif">

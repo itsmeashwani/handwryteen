@@ -31,18 +31,14 @@ Route::middleware(['auth.shopify'])->group(function () {
 
     Route::get('/configuration', 'HandwryttenApiController@config');
 
-    // Route::post('ajaxRequest', 'HandwryttenApiController@cardData');
     Route::post('ajaxRequest', 'HandwryttenApiController@cardData')->name('ajaxRequest.post');
-
-    // Route::get('/', function () {
-    //     $shop = Auth::user();
-    //     $shopApi = $shop->api()->rest('GET', '/admin/shop.json');
-    //     // dd($shop);
-    //     return view('welcome', compact('shopApi'));
-    // })->name('home');
-    
-    // Route::view('customers', 'customers');
-    // Route::view('products', 'products');
-    // Route::view('settings', 'settings');
-    // Route::resource('triggers', 'ShopifyTriggerController');
 });
+
+// Route::get('/orders/create','OrdersWebhookController@create');
+Route::middleware(['auth.webhook'])->group(function () {
+    Route::get('webhook/orders/create','OrdersWebhookController@create');
+});
+
+// Route::get('/register-webhook', 'OrdersWebhookController@registerOrdersWebhook')->name('orders');
+
+// Route::get('/webhooks/orders-created', 'OrdersWebhookController@ordersCreated')->name('ordersCreated');

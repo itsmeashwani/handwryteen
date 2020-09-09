@@ -36,8 +36,8 @@
                                         @method('PUT')
                                     <div class="mt-3">
                                         <div class="custom-control custom-switch">
-                                            <input type="checkbox" name="trigger_status" class="custom-control-input" id="trigger_status" value="{{ $trigger->trigger_status}}" checked onclick="triggeerStatus()">
-                                            <label class="custom-control-label" for="trigger_status" id="triggerStatus">Enabled</label>
+                                            <input type="checkbox" name="trigger_status" class="custom-control-input" id="trigger_status" value="{{ $trigger->trigger_status}}" onclick="triggeerStatus()">
+                                            <label class="custom-control-label" for="trigger_status" id="triggerStatus">Disabled</label>
                                         </div>
                                     </div>
                                 </div>
@@ -104,13 +104,13 @@
                                             <div class="form-group row">
                                                 <label for="trigger_message" class="col-sm-4 col-form-label">Message:</label>
                                                 <div class="col-sm-8 pl-0">
-                                                <textarea name="trigger_message" class="form-control" id="trigger_message" cols="24" rows="4" placeholder="Enter a message">{{ $trigger->trigger_message }}</textarea>
+                                                <textarea name="trigger_message" class="form-control" id="trigger_message" cols="24" rows="4" placeholder="Enter a message">{{ old('trigger_message') ?? $trigger->trigger_message }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="trigger_signoff" class="col-sm-4 col-form-label">Sign Off:</label>
                                                 <div class="col-sm-8">
-                                                <textarea name="trigger_signoff" class="float-right mr-3 form-control" id="trigger_signoff" cols="15" rows="3" placeholder="Enter a message">{{ $trigger->trigger_signoff }}</textarea>
+                                                <textarea name="trigger_signoff" class="float-right mr-3 form-control" id="trigger_signoff" cols="15" rows="3" placeholder="Enter a message">{{ old('trigger_signoff') ?? $trigger->trigger_signoff }}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,7 +121,7 @@
                                                     <select class="custom-select" name="trigger_handwriting_style" id="trigger_handwriting_style">
                                                         <option value="">Please Select</option>
                                                         @foreach($style->fonts as $data)
-                                                        <option value="{{ $data->label}}" @if($data->label == $trigger->trigger_handwriting_style) selected @endif>{{ $data->label}}</option>
+                                                        <option value="{{  $data->label }}" @if($data->label == $trigger->trigger_handwriting_style) selected @endif>{{ $data->label}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -134,7 +134,7 @@
                                                         <option value="">Please Select</option>
                                                         <option value="Sticker" @if($trigger->trigger_insert == 'Sticker') selected @endif>Sticker</option>
                                                         @foreach($insertData->inserts as $data)
-                                                        <option value="{{ $data->name}}" @if($data->name == $trigger->trigger_insert) selected @endif>{{ $data->name}}</option>
+                                                        <option value="{{ $data->name }}" @if($data->name == $trigger->trigger_insert) selected @endif>{{ $data->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -146,7 +146,7 @@
                                                     <select class="custom-select" name="trigger_gift_card" id="trigger_gift_card">
                                                         <option value="">Please Select</option>
                                                         @foreach($giftCard->gcards as $data)
-                                                        <option value="{{ $data->name}}" @if($data->name == $trigger->trigger_gift_card) selected @endif>{{ $data->name}}</option>
+                                                        <option value="{{ $data->name }}" @if($data->name == $trigger->trigger_gift_card) selected @endif>{{ $data->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -230,11 +230,11 @@
             var newStatus = document.getElementById("trigger_status").value;
             if(newStatus == '1'){
                 document.getElementById("trigger_status").value = '0';
-                document.getElementById("triggerStatus").innerHTML = "Disabled";
+                document.getElementById("triggerStatus").innerHTML = "Enabled";
             }
             else{
                 document.getElementById("trigger_status").value = '1';
-                document.getElementById("triggerStatus").innerHTML = "Enabled";
+                document.getElementById("triggerStatus").innerHTML = "Disabled";
             }
         }
 

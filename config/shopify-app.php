@@ -131,7 +131,7 @@ return [
     |
     */
 
-    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_products,read_themes,write_themes,read_customers,read_orders,write_script_tags'),
+    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_products,read_themes,write_themes,read_customers,read_orders,write_orders,write_script_tags'),
 
     /*
     |--------------------------------------------------------------------------
@@ -264,6 +264,11 @@ return [
     */
 
     'webhooks' => [
+
+        [
+            'topic' => 'orders/create',
+            'address' => 'https://777d1de817f2.ngrok.io/handwritten/webhook/orders-create',
+        ],
         /*
             [
                 'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'orders/create'),
@@ -305,6 +310,12 @@ return [
     */
 
     'after_authenticate_job' => [
+
+        [
+            'job' => '\App\Jobs\AfterAuthorizeJob::class', // example: \App\Jobs\AfterAuthorizeJob::class
+            'inline' => true // False = dispatch job for later, true = dispatch immediately
+        ],
+
         /*
             [
                 'job' => env('AFTER_AUTHENTICATE_JOB'), // example: \App\Jobs\AfterAuthorizeJob::class
